@@ -4,5 +4,8 @@
   "description": "locomotive tracking app",
   "main": "app.js",
   "author": "Cat Ponickova <pony@bahnhof.cz>",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
 }
