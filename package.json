@@ -1,0 +1,8 @@
+{
+  "name": "achtung-banan",
+  "version": "0.0.1",
+  "description": "locomotive tracking app",
+  "main": "app.js",
+  "author": "Cat Ponickova <pony@bahnhof.cz>",
+  "license": "ISC"
+}
