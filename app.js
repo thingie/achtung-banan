@@ -3,6 +3,7 @@ const apiRouter = require('./apiRoute');
 const middleware = require('./middleware');
 const mongo = require('./mongoClient');
 const dotenv = require('dotenv');
+const jobQueue = require('./jobQueue');
 
 let app = undefined;
 
@@ -16,13 +17,16 @@ try {
     mongo.initData(mongoClient).then((r) => {
         if (r) {
             app = _init();
+            jobs = jobQueue.initJobQueue(mongoClient);
+
+            // here we start to listen
             app();
         } else {
             console.log('Mongo data loading failed');
             process.exit(-1);
         }
-    }).catch(() => {
-        console.log('Failed to init mongo');
+    }).catch((e) => {
+        console.log('Failed to init ' + e);
         process.exit(-1);
     });
 }
