@@ -1,25 +1,31 @@
 const { MongoClient } = require("mongodb");
 const fs = require('fs');
 
+let client = undefined;
+
 function initMongo() {
     if (process.env.BANAN_MONGO_STRING === undefined) {
         throw 'Mongo connection string not set in BANAN_MONGO_STRING';
     }
 
-    const client = new MongoClient(process.env.BANAN_MONGO_STRING);
-    const db = client.db('bananas');
+    const mongoClient = new MongoClient(process.env.BANAN_MONGO_STRING);
+    const db = mongoClient.db('bananas');
 
-    return { 
-        '_client': client,
+    client = {
+        '_client': mongoClient,
         'bananasDb': db,
-        'locomotives': db.collection('locomotives')
+        'locomotives': db.collection('locomotives'),
+        'isInitialized': false
     }
+
+    return client;
 }
 
 async function initData(client) {
     try {
         if (await client.locomotives.count() > 0) {
             console.log('More than one locomotive present, considering initialized');
+            client.isInitialized = true;
             return true;
         }
 
@@ -27,6 +33,7 @@ async function initData(client) {
 
         await client.locomotives.insertMany(locData.list);
 
+        client.isInitialized = true;
         return true;
     }
     catch (err) {
@@ -36,4 +43,12 @@ async function initData(client) {
     return false;
 }
 
-module.exports = { initMongo, initData };
+function getDBClient() {
+    if (client && client.isInitialized) {
+        return client;
+    }
+
+    return undefined;
+}
+
+module.exports = { initMongo, initData, getDBClient };
