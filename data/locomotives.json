@@ -1,0 +1,83 @@
+{
+    "description": "List of existing class 151 locomotives",
+    "attribution": "Sourced from https://www.atlasvozu.cz/rada/cd/173-151.html on Feb 2nd 2025",
+    "comment": "This list appears to be outdated, none of the locomotives are in Bohumin anymore, but since no new ones are made, it's at least final and complete",
+    "list": [
+        {
+            "uicNumber": "91 54 7 151 001-5",
+            "shortNumber": "001",
+            "state": "unknown",
+            "comment": ""
+        },
+        {
+            "uicNumber": "91 54 7 151 004-9",
+            "shortNumber": "004",
+            "state": "unknown",
+            "comment": ""
+        },
+        {
+            "uicNumber": "91 54 7 151 006-4",
+            "shortNumber": "006",
+            "state": "unknown",
+            "comment": ""
+        },
+        {
+            "uicNumber": "91 54 7 151 007-2",
+            "shortNumber": "007",
+            "state": "unknown",
+            "comment": ""
+        },
+        {
+            "uicNumber": "91 54 7 151 008-0",
+            "shortNumber": "008",
+            "state": "unknown"
+        },
+        {
+            "uicNumber": "91 54 7 151 011-4",
+            "shortNumber": "011",
+            "state": "unknown"
+        },
+        {
+            "uicNumber": "91 54 7 151 012-2",
+            "shortNumber": "012",
+            "state": "unknown",
+            "comment": ""
+        },
+        {
+            "uicNumber": "91 54 7 151 014-8",
+            "shortNumber": "014",
+            "state": "unknown",
+            "comment": ""
+        },
+        {
+            "uicNumber": "91 54 7 151 016-3",
+            "shortNumber": "016",
+            "state": "unknown",
+            "comment": ""
+        },
+        {
+            "uicNumber": "91 54 7 151 019-7",
+            "shortNumber": "019",
+            "state": "unknown",
+            "comment": ""
+        },
+        {
+            "uicNumber": "91 54 7 151 020-5",
+            "shortNumber": "020",
+            "state": "scrapped",
+            "comment": "Scrapped after the road crossing accident near Bohumin in 2024, no reason for it to even be here tbh"
+        },
+        {
+            "uicNumber": "91 54 7 151 023-9",
+            "shortNumber": "023",
+            "state": "unknown",
+            "comment": "Historic CSD livery"
+        },
+        {
+            "uicNumber": "91 54 7 151 027-0",
+            "shortNumber": "027",
+            "state": "unknown",
+            "comment": ""
+        }
+    ]
+}
