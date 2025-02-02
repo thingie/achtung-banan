@@ -1,8 +1,28 @@
 const express = require('express')
 const apiRouter = require('./apiRoute');
 const middleware = require('./middleware');
+const mongo = require('./mongoClient');
+const dotenv = require('dotenv');
 
-_init();
+let app = undefined;
+
+try {
+    dotenv.config();
+    const mongoClient = _initMongo();
+    app = _init();
+}
+catch (err) {
+    console.error('Application failed to load, reason:')
+    console.error(err);
+}
+
+app();
+
+function _initMongo() {
+    const client =  mongo.initMongo();
+    mongo.initData(client);
+    return client;
+}
 
 function _init() {
     const app = express();
@@ -18,5 +38,5 @@ function _init() {
     // config
     const port = 3000;
 
-    app.listen(port, () => { console.log("started"); });
+    return () => { app.listen(port, () => { console.log("started"); }); }
 }
