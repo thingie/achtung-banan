@@ -9,18 +9,26 @@ let app = undefined;
 try {
     dotenv.config();
     const mongoClient = _initMongo();
-    app = _init();
+    mongo.initData(mongoClient).then((r) => {
+        if (r) {
+            app = _init();
+            app();
+        } else {
+            console.log('Mongo data loading failed');
+            process.exit(-1);
+        }
+    }).catch(() => {
+        console.log('Failed to init mongo');
+        process.exit(-1);
+    });
 }
 catch (err) {
     console.error('Application failed to load, reason:')
     console.error(err);
 }
 
-app();
-
 function _initMongo() {
     const client =  mongo.initMongo();
-    mongo.initData(client);
     return client;
 }
 

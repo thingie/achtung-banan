@@ -26,6 +26,8 @@ async function initData(client) {
         const locData = JSON.parse(fs.readFileSync('data/locomotives.json', encoding='utf-8'));
 
         await client.locomotives.insertMany(locData.list);
+
+        return true;
     }
     catch (err) {
         console.error('Failed to populate data in Mongo ' + err);
