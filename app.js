@@ -9,6 +9,10 @@ let app = undefined;
 try {
     dotenv.config();
     const mongoClient = _initMongo();
+
+    // I can't do await here because then this has to be a module, which it is not
+    // somehow chaining thens is a solution, however ugly one, this probably can
+    // be handled much more cleanly
     mongo.initData(mongoClient).then((r) => {
         if (r) {
             app = _init();
