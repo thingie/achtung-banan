@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "locomotive tracking app",
   "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
   "author": "Cat Ponickova <pony@bahnhof.cz>",
   "license": "ISC",
   "dependencies": {
