@@ -25,10 +25,16 @@ router.get('/getLocomotive/:number',
 
         dbClient = getDBClient();
         const r = await dbClient.locomotives.findOne({shortNumber: shortName});
+	const trains = await dbClient.trainList.find({shortName: '151.'+shortName}).toArray();
+	let info = `information about locomotive\nfull UIC number: ${r.uicNumber}\ncurrent state is ${r.state}\nadditional comment: ${r.comment}`;
+	for (t in trains) {
+		const train = trains[t];
+		info += `\ntrain: ${train.train}, date: ${train.date}`;
+	}
         if (r === null) {
             res.status(404).send("this locomotive does not exist");
        } else {
-            res.send(`information about locomotive\nfull UIC number: ${r.uicNumber}\ncurrent state is ${r.state}\nadditional comment: ${r.comment}`);
+            res.send(info);
        }
 
         next();

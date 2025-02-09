@@ -18,6 +18,7 @@ try {
         if (r) {
             app = _init();
             jobs = jobQueue.initJobQueue(mongoClient);
+	    jobQueue.scrapeVypravenost({});
 
             // here we start to listen
             app();
