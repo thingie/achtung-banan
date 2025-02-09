@@ -33,7 +33,7 @@ async function initData(client) {
         const locData = JSON.parse(fs.readFileSync('data/locomotives.json', encoding='utf-8'));
 
 	// this index is necessary, but this creation seems not to work, sigh, TODO
-	await client.trainList.createIndex( { 'train': 1, 'shortName': 1, 'date': 1 }, { unique: true } );
+	//await client.trainList.createIndex( { 'train': 1, 'shortName': 1, 'date': 1 }, { unique: true } );
         await client.locomotives.insertMany(locData.list);
 
         client.isInitialized = true;
